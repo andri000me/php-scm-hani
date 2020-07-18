@@ -1,4 +1,4 @@
-# Sistem Informasi Supply Chain Management.
+# Sistem Informasi Supply Chain Management
 
 ## Role User :
 - Admin (Kepala Gudang)
@@ -12,6 +12,10 @@
 - Peramalan
 - Login
 
+
+---
+
+
 ### Kepala Gudang :
 - user (tambah, ubah, delete) :: *done*
 - produk (tambah, ubah, delete) :: *done*
@@ -23,14 +27,14 @@
 - monitoring produksi
 - peramalan (tambah, ubah, delete)
 
-### manajer distribusi
+### Manajer Distribusi
 - kendaraan (tambah, ubah, delete) :: *done*
 - distribusi (tambah, ubah, delete) :: *done*
 
-### manajer produksi
+### Manajer Produksi
 - produksi (ubah, delete) 
 
-### marketing
+### Manajer Marketing
 - pemesanan produk (tambah, ubah, delete)
 
 
