@@ -196,15 +196,17 @@ DELETE FROM `detail_produksi`;
 
 -- Dumping structure for table db_cvmitra.distribusi
 CREATE TABLE IF NOT EXISTS `distribusi` (
-  `id_distribusi` int(11) NOT NULL,
+  `id_distribusi` int(11) NOT NULL AUTO_INCREMENT,
   `tanggal_pemesanan` date NOT NULL,
   `nama_customer` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id_distribusi`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumping data for table db_cvmitra.distribusi: ~0 rows (approximately)
+-- Dumping data for table db_cvmitra.distribusi: ~1 rows (approximately)
 DELETE FROM `distribusi`;
 /*!40000 ALTER TABLE `distribusi` DISABLE KEYS */;
+INSERT INTO `distribusi` (`id_distribusi`, `tanggal_pemesanan`, `nama_customer`) VALUES
+	(1, '2020-07-18', 'asep');
 /*!40000 ALTER TABLE `distribusi` ENABLE KEYS */;
 
 -- Dumping structure for table db_cvmitra.kendaraan
@@ -215,7 +217,7 @@ CREATE TABLE IF NOT EXISTS `kendaraan` (
   PRIMARY KEY (`no_polisi`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumping data for table db_cvmitra.kendaraan: ~0 rows (approximately)
+-- Dumping data for table db_cvmitra.kendaraan: ~1 rows (approximately)
 DELETE FROM `kendaraan`;
 /*!40000 ALTER TABLE `kendaraan` DISABLE KEYS */;
 INSERT INTO `kendaraan` (`no_polisi`, `jenis`, `kapasitas`) VALUES

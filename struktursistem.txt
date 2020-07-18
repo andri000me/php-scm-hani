@@ -15,7 +15,7 @@ manajer distribusi
 - distribusi (tambah, ubah, delete)
 
 manajer produksi
-- produksi (tambah, ubah, delete)
+- produksi (ubah, delete)
 
 marketing
 - pemesanan produk (tambah, ubah, delete)

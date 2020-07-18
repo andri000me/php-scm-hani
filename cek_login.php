@@ -32,27 +32,15 @@ if ($cek > 0) {
 
         //alihkan
         header("location:pages/admin/");
-    } else if ($data['hak_akses'] == "gudang") {
-        //buat session
-        $_SESSION['username'] = $username;
-        $_SESSION['hak_akses'] = "gudang";
-
-        //alihkan
-        header("location:gudang/");
     } else if ($data['hak_akses'] == "produksi") {
         //buat session
         $_SESSION['username'] = $username;
         $_SESSION['hak_akses'] = "produksi";
+        $_SESSION['nama'] = $data['nama'];
+        $_SESSION['jabatan'] = $data['jabatan'];
 
         //alihkan
-        header("location:produksi/");
-    } else if ($data['hak_akses'] == "admin") {
-        //buat session
-        $_SESSION['username'] = $username;
-        $_SESSION['hak_akses'] = "admin";
-
-        //alihkan
-        header("location:pages/admin/");
+        header("location:pages/produksi/");
     } else if ($data['hak_akses'] == "marketing") {
         //buat session
         $_SESSION['username'] = $username;

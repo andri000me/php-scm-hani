@@ -34,7 +34,7 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Kelola Kendaraan</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Kelola Distribusi</h1>
                     </div>
 
                     <!-- Content Row -->
@@ -43,7 +43,7 @@
                             <div class="card mb-5">
                                 <div class="card-header">
                                     <div class="nav-item">
-                                        <a href="tambah-produk.php" class="btn btn-sm btn-primary">Tambah Data</a>
+                                        <a href="tambah-distribusi.php" class="btn btn-sm btn-primary">Tambah Data</a>
                                     </div>
                                 </div>
                                 <div class="card-body">
@@ -51,9 +51,8 @@
                                         <thead class="thead-light text-center">
                                             <tr>
                                                 <th width=6%>No</th>
-                                                <th>No Polisi</th>
-                                                <th>Jenis</th>
-                                                <th>Kapasitas</th>
+                                                <th>Tanggal Pemesanan</th>
+                                                <th>Nama Customer</th>
                                                 <th width=23%></th>
                                             </tr>
                                         </thead>
@@ -62,7 +61,7 @@
                                             include "../../koneksi.php";
 
                                             $no = 1;
-                                            $data = mysqli_query($koneksi, "SELECT * FROM kendaraan");
+                                            $data = mysqli_query($koneksi, "SELECT * FROM distribusi");
                                             if (mysqli_num_rows($data) == 0) {
                                                 ?>
                                                 <tr>
@@ -74,14 +73,13 @@
                                                         ?>
                                                     <tr>
                                                         <td class="text-center align-middle"><?php echo $no++; ?></td>
-                                                        <td class="align-middle"><?php echo $item['no_polisi']; ?></td>
-                                                        <td class="align-middle"><?php echo $item['jenis']; ?></td>
-                                                        <td class="align-middle">Rp. <?php echo $item['kapasitas']; ?></td>
+                                                        <td class="align-middle"><?php echo date('m-d-Y', strtotime($item['tanggal_pemesanan'])); ?></td>
+                                                        <td class="align-middle"><?php echo $item['nama_customer']; ?></td>
                                                         <td class="text-center">
-                                                            <a href="ubah-kendaraan.php?id=<?php echo $item['no_polisi'] ?>" class="btn btn-info btn-sm mx-1 float-left">Ubah</a>
-                                                            <a href="detail-kendaraan.php?id=<?php echo $item['no_polisi'] ?>" class="btn btn-success btn-sm mx-1 float-left">Detail</a>
+                                                            <a href="ubah-distribusi.php?id=<?php echo $item['id_distribusi'] ?>" class="btn btn-info btn-sm mx-1 float-left">Ubah</a>
+                                                            <a href="detail-distribusi.php?id=<?php echo $item['id_distribusi'] ?>" class="btn btn-success btn-sm mx-1 float-left">Detail</a>
 
-                                                            <form action="hapus-kendaraan.php?id=<?php echo $item['no_polisi'] ?>" method="post">
+                                                            <form action="hapus-distribusi.php?id=<?php echo $item['id_distribusi'] ?>" method="post">
                                                                 <button type="submit" class="btn btn-danger btn-sm mx-1 float-left">Hapus</button>
                                                             </form>
                                                         </td>
