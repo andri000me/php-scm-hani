@@ -1,0 +1,25 @@
+Kepala Gudang :
+- user (tambah, ubah, delete)
+- produk (tambah, ubah, delete)
+- supplier (tambah, ubah, delete)
+- bahan baku (tambah, ubah, delete)
+- pemesanan bahan baku (tambah, ubah, delete)
+- pengadaan (tambah, ubah, delete)
+- monitoring persediaan bahan baku
+- monitoring produksi
+- peramalan (tambah, ubah, delete)
+
+manajer distribusi
+- kendaraan (tambah, ubah, delete)
+- distribusi (tambah, ubah, delete)
+
+manajer produksi
+- produksi (tambah, ubah, delete)
+
+marketing
+- pemesanan produk (tambah, ubah, delete)
+
+login
+- login
+- signup
+- forget password
