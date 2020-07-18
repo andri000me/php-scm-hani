@@ -133,11 +133,9 @@ DELETE FROM `detail_pesanbahanbaku`;
 
 -- Dumping structure for table db_cvmitra.detail_pesanproduk
 CREATE TABLE IF NOT EXISTS `detail_pesanproduk` (
-  `id_detail_pesanproduk` int(11) NOT NULL,
-  `jenis_insole` varchar(10) NOT NULL,
+  `id_detail_pesanproduk` int(11) NOT NULL AUTO_INCREMENT,
   `qty` int(11) NOT NULL,
   `ukuran` int(11) NOT NULL,
-  `harga` varchar(20) NOT NULL,
   `keterangan` varchar(30) NOT NULL,
   `id_pesanproduk` int(11) NOT NULL,
   `id_produk` varchar(10) NOT NULL,
@@ -146,11 +144,13 @@ CREATE TABLE IF NOT EXISTS `detail_pesanproduk` (
   KEY `id_produk` (`id_produk`),
   CONSTRAINT `detail_pesanproduk_ibfk_1` FOREIGN KEY (`id_pesanproduk`) REFERENCES `pesanproduk` (`id_pesanproduk`),
   CONSTRAINT `detail_pesanproduk_ibfk_2` FOREIGN KEY (`id_produk`) REFERENCES `produk` (`id_produk`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 -- Dumping data for table db_cvmitra.detail_pesanproduk: ~0 rows (approximately)
 DELETE FROM `detail_pesanproduk`;
 /*!40000 ALTER TABLE `detail_pesanproduk` DISABLE KEYS */;
+INSERT INTO `detail_pesanproduk` (`id_detail_pesanproduk`, `qty`, `ukuran`, `keterangan`, `id_pesanproduk`, `id_produk`) VALUES
+	(2, 12, 42, 'Sepatu', 4, 'IS02');
 /*!40000 ALTER TABLE `detail_pesanproduk` ENABLE KEYS */;
 
 -- Dumping structure for table db_cvmitra.detail_produk
@@ -200,13 +200,14 @@ CREATE TABLE IF NOT EXISTS `distribusi` (
   `tanggal_pemesanan` date NOT NULL,
   `nama_customer` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id_distribusi`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
--- Dumping data for table db_cvmitra.distribusi: ~1 rows (approximately)
+-- Dumping data for table db_cvmitra.distribusi: ~2 rows (approximately)
 DELETE FROM `distribusi`;
 /*!40000 ALTER TABLE `distribusi` DISABLE KEYS */;
 INSERT INTO `distribusi` (`id_distribusi`, `tanggal_pemesanan`, `nama_customer`) VALUES
-	(1, '2020-07-18', 'asep');
+	(1, '2020-07-18', 'asep'),
+	(2, '2020-07-22', 'asep');
 /*!40000 ALTER TABLE `distribusi` ENABLE KEYS */;
 
 -- Dumping structure for table db_cvmitra.kendaraan
@@ -217,7 +218,7 @@ CREATE TABLE IF NOT EXISTS `kendaraan` (
   PRIMARY KEY (`no_polisi`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumping data for table db_cvmitra.kendaraan: ~1 rows (approximately)
+-- Dumping data for table db_cvmitra.kendaraan: ~0 rows (approximately)
 DELETE FROM `kendaraan`;
 /*!40000 ALTER TABLE `kendaraan` DISABLE KEYS */;
 INSERT INTO `kendaraan` (`no_polisi`, `jenis`, `kapasitas`) VALUES
@@ -322,6 +323,8 @@ CREATE TABLE IF NOT EXISTS `pesanproduk` (
 -- Dumping data for table db_cvmitra.pesanproduk: ~0 rows (approximately)
 DELETE FROM `pesanproduk`;
 /*!40000 ALTER TABLE `pesanproduk` DISABLE KEYS */;
+INSERT INTO `pesanproduk` (`id_pesanproduk`, `tanggal_pemesanan`, `nama_customer`, `id_user`) VALUES
+	(4, '2020-07-22', 'udin aa', 4);
 /*!40000 ALTER TABLE `pesanproduk` ENABLE KEYS */;
 
 -- Dumping structure for table db_cvmitra.produk
@@ -333,7 +336,7 @@ CREATE TABLE IF NOT EXISTS `produk` (
   PRIMARY KEY (`id_produk`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumping data for table db_cvmitra.produk: ~10 rows (approximately)
+-- Dumping data for table db_cvmitra.produk: ~6 rows (approximately)
 DELETE FROM `produk`;
 /*!40000 ALTER TABLE `produk` DISABLE KEYS */;
 INSERT INTO `produk` (`id_produk`, `nama_produk`, `satuan_produk`, `harga`) VALUES
@@ -359,7 +362,7 @@ CREATE TABLE IF NOT EXISTS `supplier` (
   PRIMARY KEY (`id_supplier`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table db_cvmitra.supplier: ~2 rows (approximately)
+-- Dumping data for table db_cvmitra.supplier: ~3 rows (approximately)
 DELETE FROM `supplier`;
 /*!40000 ALTER TABLE `supplier` DISABLE KEYS */;
 INSERT INTO `supplier` (`id_supplier`, `nama_supplier`, `alamat_supplier`, `no_telp`, `email`) VALUES
@@ -381,7 +384,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   PRIMARY KEY (`id_user`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table db_cvmitra.user: ~4 rows (approximately)
+-- Dumping data for table db_cvmitra.user: ~0 rows (approximately)
 DELETE FROM `user`;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 INSERT INTO `user` (`id_user`, `nama`, `username`, `password`, `email`, `hak_akses`, `alamat`, `jabatan`) VALUES

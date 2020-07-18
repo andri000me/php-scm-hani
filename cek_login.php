@@ -20,6 +20,7 @@ if ($cek > 0) {
         $_SESSION['hak_akses'] = "distribusi";
         $_SESSION['nama'] = $data['nama'];
         $_SESSION['jabatan'] = $data['jabatan'];
+        $_SESSION['id_user'] = $data['id_user'];
 
         //alihkan
         header("location:pages/distribusi/");
@@ -29,6 +30,7 @@ if ($cek > 0) {
         $_SESSION['hak_akses'] = "admin";
         $_SESSION['nama'] = $data['nama'];
         $_SESSION['jabatan'] = $data['jabatan'];
+        $_SESSION['id_user'] = $data['id_user'];
 
         //alihkan
         header("location:pages/admin/");
@@ -38,6 +40,7 @@ if ($cek > 0) {
         $_SESSION['hak_akses'] = "produksi";
         $_SESSION['nama'] = $data['nama'];
         $_SESSION['jabatan'] = $data['jabatan'];
+        $_SESSION['id_user'] = $data['id_user'];
 
         //alihkan
         header("location:pages/produksi/");
@@ -45,9 +48,11 @@ if ($cek > 0) {
         //buat session
         $_SESSION['username'] = $username;
         $_SESSION['hak_akses'] = "marketing";
-
+        $_SESSION['nama'] = $data['nama'];
+        $_SESSION['jabatan'] = $data['jabatan'];
+        $_SESSION['id_user'] = $data['id_user'];
         //alihkan
-        header("location:marketing/");
+        header("location:pages/marketing/");
     } else {
 
         // alihkan ke halaman login kembali

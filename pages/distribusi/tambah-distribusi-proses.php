@@ -11,7 +11,6 @@ function ubahTanggalSql($date)
     return $date;
 }
 
-//$tanggal_pemesanan = ubahTanggalSql($_POST['tanggal_pemesanan']);
 $tanggal_pemesanan         = date('Y-m-d', strtotime($_POST['tanggal_pemesanan']));
 $nama_customer = $_POST['nama_customer'];
 

@@ -34,7 +34,7 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Kelola Produksi</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Kelola Pesanan Produk</h1>
                     </div>
 
                     <!-- Content Row -->
@@ -43,7 +43,7 @@
                             <div class="card mb-5">
                                 <div class="card-header">
                                     <div class="nav-item">
-                                        <!-- <a href="tambah-produksi.php" class="btn btn-sm btn-primary">Tambah Data</a> -->
+                                        <a href="tambah-pesanproduk.php" class="btn btn-sm btn-primary">Tambah Data</a>
                                     </div>
                                 </div>
                                 <div class="card-body">
@@ -51,14 +51,9 @@
                                         <thead class="thead-light text-center">
                                             <tr>
                                                 <th width=6% class="align-middle">No</th>
-                                                <th>Nama Pesan Produk</th>
+                                                <th>Tanggal Pemesanan</th>
                                                 <th>Nama Customer</th>
-                                                <th class="align-middle">Jumlah</th>
-                                                <th>Tanggal Mulai</th>
-                                                <th>Tanggal Selesai</th>
-                                                <th>Nama Produk</th>
-                                                <th>Nama Bahan Baku</th>
-                                                <th width=16%></th>
+                                                <th width=23%></th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -66,11 +61,11 @@
                                             include "../../koneksi.php";
 
                                             $no = 1;
-                                            $data = mysqli_query($koneksi, "SELECT * FROM produksi");
+                                            $data = mysqli_query($koneksi, "SELECT * FROM pesanproduk");
                                             if (!$data) {
                                                 ?>
                                                 <tr>
-                                                    <td colspan="8" class="text-center font-weight-bold">Data Kosong</td>
+                                                    <td colspan="3" class="text-center font-weight-bold">Data Kosong</td>
                                                 </tr>
                                                 <?php
                                                 } else {
@@ -78,18 +73,13 @@
                                                         ?>
                                                     <tr>
                                                         <td class="text-center align-middle"><?php echo $no++; ?></td>
-                                                        <td class="align-middle"><?php echo $item['id_pesanproduk']; ?></td>
+                                                        <td class="align-middle"><?php echo $item['tanggal_pemesanan']; ?></td>
                                                         <td class="align-middle"><?php echo $item['nama_customer']; ?></td>
-                                                        <td class="align-middle"><?php echo $item['jumlah']; ?></td>
-                                                        <td class="align-middle"><?php echo $item['tanggal_mulai']; ?></td>
-                                                        <td class="align-middle"><?php echo $item['tanggal_selesai']; ?></td>
-                                                        <td class="align-middle"><?php echo $item['id_produk']; ?></td>
-                                                        <td class="align-middle"><?php echo $item['id_bahanbaku']; ?></td>
                                                         <td class="text-center">
-                                                            <a href="ubah-kendaraan.php?id=<?php echo $item['id_detail_produksi'] ?>" class="btn btn-info btn-sm mx-1 float-left">Ubah</a>
-                                                            <a href="detail-kendaraan.php?id=<?php echo $item['id_detail_produksi'] ?>" class="btn btn-success btn-sm mx-1 float-left">Detail</a>
+                                                            <a href="ubah-pesanproduk.php?id=<?php echo $item['id_pesanproduk'] ?>" class="btn btn-info btn-sm mx-1 float-left">Ubah</a>
+                                                            <a href="detail-pesanproduk.php?id=<?php echo $item['id_pesanproduk'] ?>" class="btn btn-success btn-sm mx-1 float-left">Detail</a>
 
-                                                            <form action="hapus-kendaraan.php?id=<?php echo $item['id_detail_produksi'] ?>" method="post">
+                                                            <form action="hapus-pesanproduk.php?id=<?php echo $item['id_pesanproduk'] ?>" method="post">
                                                                 <button type="submit" class="btn btn-danger btn-sm mx-1 float-left">Hapus</button>
                                                             </form>
                                                         </td>

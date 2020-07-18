@@ -12,10 +12,6 @@
 - Peramalan
 - Login
 
-
-
-
-
 ### Kepala Gudang :
 - user (tambah, ubah, delete) :: *done*
 - produk (tambah, ubah, delete) :: *done*
@@ -35,6 +31,6 @@
 - produksi (ubah, delete) 
 
 ### Manajer Marketing
-- pemesanan produk (tambah, ubah, delete)
+- pemesanan produk (tambah, ubah, delete) :: *done tambah*
 
 
