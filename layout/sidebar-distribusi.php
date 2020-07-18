@@ -25,27 +25,15 @@
     </div>
 
     <li class="nav-item">
-        <a class="nav-link" href="kelola-pengguna.php">
+        <a class="nav-link" href="kelola-kendaraan.php">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Kelola Pengguna</span></a>
+            <span>Kelola Kendaraan</span></a>
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="kelola-supplier.php">
+        <a class="nav-link" href="kelola-distribusi.php">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Kelola Supplier</span></a>
-    </li>
-
-    <li class="nav-item">
-        <a class="nav-link" href="kelola-bahanbaku.php">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Kelola Bahan Baku</span></a>
-    </li>
-
-    <li class="nav-item">
-        <a class="nav-link" href="kelola-produk.php">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Kelola Produk</span></a>
+            <span>Kelola Distribusi</span></a>
     </li>
 
     <hr class="sidebar-divider my-0">

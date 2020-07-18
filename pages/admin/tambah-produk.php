@@ -7,7 +7,7 @@
 
 <body id="page-top">
 
-<?php
+    <?php
     session_start();
 
     //cek apakah yang mengakses halaman ini sudah login
@@ -34,7 +34,7 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Tambah Jenis Bahan Baku</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Tambah Produk</h1>
                     </div>
 
                     <!-- Content Row -->
@@ -45,10 +45,18 @@
                                 </div>
                                 <div class="card-body">
                                     <!-- Content -->
-                                    <form action="tambah-jenisbahanbaku-proses.php" method="post">
+                                    <form action="tambah-produk-proses.php" method="post">
                                         <div class="form-group">
-                                            <label for="nama_jenisbahanbaku">Nama Jenis Bahan Baku</label>
-                                            <input type="text" name="nama_jenisbahanbaku" id="nama_jenisbahanbaku" placeholder="Isikan Nama Jenis Bahan Baku" class="form-control" required />
+                                            <label for="nama_produk">Nama Produk </label>
+                                            <input type="text" name="nama_produk" id="nama_produk" placeholder="Isikan Nama Produk " class="form-control" required />
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="satuan_produk">Satuan Produk</label>
+                                            <input type="text" name="satuan_produk" id="satuan_produk" placeholder="Isikan Satuan Produk" class="form-control" required />
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="harga">Harga (Rp)</label>
+                                            <input type="text" name="harga" id="harga" placeholder="Isikan Harga" class="form-control" required />
                                         </div>
 
                                         <hr>

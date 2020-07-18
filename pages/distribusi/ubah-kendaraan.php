@@ -7,7 +7,7 @@
 
 <body id="page-top">
 
-<?php
+    <?php
     session_start();
 
     //cek apakah yang mengakses halaman ini sudah login
@@ -19,7 +19,7 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
 
-        <?php include '../../layout/sidebar-admin.php' ?>
+        <?php include '../../layout/sidebar-distribusi.php' ?>
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
@@ -34,7 +34,7 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Ubah Jenis Bahan Baku</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Ubah Kendaraan</h1>
                     </div>
 
                     <!-- Content Row -->
@@ -46,26 +46,29 @@
                                 <div class="card-body">
                                     <!-- Content -->
                                     <?php
-                                        include "../../koneksi.php";
-                                        $id = $_GET['id'];
-                                        $data = mysqli_query($koneksi,"select * from jenisbahanbaku where id_jenisbahanbaku='$id'");
-                                        while($d = mysqli_fetch_array($data)){
-                                            ?>
-                                    <form action="ubah-jenisbahanbaku-proses.php" method="post">
-                                        <div class="form-group">
-                                            <input type="hidden" name="id_jenisbahanbaku" id="id_jenisbahanbaku" value="<?php echo $d['id_jenisbahanbaku']; ?>" required/>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="nama_jenisbahanbaku">Nama Jenis Bahan Baku</label>
-                                            <input type="text" name="nama_jenisbahanbaku" id="nama_jenisbahanbaku" value="<?php echo $d['nama_jenisbahanbaku']; ?>"class="form-control" required/>
-                                        </div>
-                                    
-                                        <hr>
-                                        <div class="form-group">
-                                            <input type="submit" class="btn btn-primary" value="Ubah" />
-                                        </div>
-                                    </form>
-                                        <?php 
+                                    include "../../koneksi.php";
+                                    $id = $_GET['id'];
+                                    $data = mysqli_query($koneksi, "select * from kendaraan where no_polisi='$id'");
+                                    while ($d = mysqli_fetch_array($data)) {
+                                        ?>
+                                        <form action="ubah-kendaraan-proses.php" method="post">
+                                            <div class="form-group">
+                                                <input type="hidden" name="no_polisi" id="no_polisi" value="<?php echo $d['no_polisi']; ?>" required />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="jenis">Jenis Kendaraan</label>
+                                                <input type="text" name="jenis" id="jenis" value="<?php echo $d['jenis']; ?>" class="form-control" required />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="kapasitas">Kapasitas</label>
+                                                <input type="text" name="kapasitas" id="kapasitas" value="<?php echo $d['kapasitas']; ?>" class="form-control" required />
+                                            </div>
+                                            <hr>
+                                            <div class="form-group">
+                                                <input type="submit" class="btn btn-primary" value="Ubah" />
+                                            </div>
+                                        </form>
+                                    <?php
                                     }
                                     ?>
                                     <!-- End Content -->

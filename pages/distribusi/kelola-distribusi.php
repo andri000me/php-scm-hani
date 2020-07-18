@@ -7,7 +7,7 @@
 
 <body id="page-top">
 
-<?php
+    <?php
     session_start();
 
     //cek apakah yang mengakses halaman ini sudah login
@@ -19,7 +19,7 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
 
-        <?php include '../../layout/sidebar-admin.php' ?>
+        <?php include '../../layout/sidebar-distribusi.php' ?>
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
@@ -34,7 +34,7 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Kelola Jenis Produk</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Kelola Kendaraan</h1>
                     </div>
 
                     <!-- Content Row -->
@@ -43,7 +43,7 @@
                             <div class="card mb-5">
                                 <div class="card-header">
                                     <div class="nav-item">
-                                        <a href="tambah-pengguna.php" class="btn btn-sm btn-primary">Tambah Data</a>
+                                        <a href="tambah-produk.php" class="btn btn-sm btn-primary">Tambah Data</a>
                                     </div>
                                 </div>
                                 <div class="card-body">
@@ -51,13 +51,10 @@
                                         <thead class="thead-light text-center">
                                             <tr>
                                                 <th width=6%>No</th>
-                                                <th>Nama</th>
-                                                <th>Alamat</th>
-                                                <th>Username</th>
-                                                <th>Password</th>
-                                                <th>Email</th>
-                                                <th>Jabatan</th>
-                                                <th width=16%></th>
+                                                <th>No Polisi</th>
+                                                <th>Jenis</th>
+                                                <th>Kapasitas</th>
+                                                <th width=23%></th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -65,7 +62,7 @@
                                             include "../../koneksi.php";
 
                                             $no = 1;
-                                            $data = mysqli_query($koneksi, "SELECT * FROM user");
+                                            $data = mysqli_query($koneksi, "SELECT * FROM kendaraan");
                                             if (mysqli_num_rows($data) == 0) {
                                                 ?>
                                                 <tr>
@@ -77,16 +74,14 @@
                                                         ?>
                                                     <tr>
                                                         <td class="text-center align-middle"><?php echo $no++; ?></td>
-                                                        <td class="align-middle"><?php echo $item['nama']; ?></td>
-                                                        <td class="align-middle"><?php echo $item['alamat']; ?></td>
-                                                        <td class="align-middle"><?php echo $item['username']; ?></td>
-                                                        <td class="align-middle"><?php echo $item['password']; ?></td>
-                                                        <td class="align-middle"><?php echo $item['email']; ?></td>
-                                                        <td class="align-middle"><?php echo $item['jabatan']; ?></td>
+                                                        <td class="align-middle"><?php echo $item['no_polisi']; ?></td>
+                                                        <td class="align-middle"><?php echo $item['jenis']; ?></td>
+                                                        <td class="align-middle">Rp. <?php echo $item['kapasitas']; ?></td>
                                                         <td class="text-center">
-                                                            <a href="ubah-pengguna.php?id=<?php echo $item['id_user'] ?>" class="btn btn-info btn-sm mx-1 float-left">Ubah</a>
+                                                            <a href="ubah-kendaraan.php?id=<?php echo $item['no_polisi'] ?>" class="btn btn-info btn-sm mx-1 float-left">Ubah</a>
+                                                            <a href="detail-kendaraan.php?id=<?php echo $item['no_polisi'] ?>" class="btn btn-success btn-sm mx-1 float-left">Detail</a>
 
-                                                            <form action="hapus-pengguna.php?id=<?php echo $item['id_user'] ?>" method="post">
+                                                            <form action="hapus-kendaraan.php?id=<?php echo $item['no_polisi'] ?>" method="post">
                                                                 <button type="submit" class="btn btn-danger btn-sm mx-1 float-left">Hapus</button>
                                                             </form>
                                                         </td>
@@ -128,9 +123,9 @@
 
     <?php include '../../layout/js.php' ?>
     <script>
-    $(document).ready(function() {
-        $('#Table').DataTable();
-    } );
+        $(document).ready(function() {
+            $('#Table').DataTable();
+        });
     </script>
 
 </body>

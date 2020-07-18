@@ -7,7 +7,7 @@
 
 <body id="page-top">
 
-<?php
+    <?php
     session_start();
 
     //cek apakah yang mengakses halaman ini sudah login
@@ -34,7 +34,7 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Kelola Pengguna</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Kelola Bahan Baku</h1>
                     </div>
 
                     <!-- Content Row -->
@@ -43,7 +43,7 @@
                             <div class="card mb-5">
                                 <div class="card-header">
                                     <div class="nav-item">
-                                        <a href="tambah-pengguna.php" class="btn btn-sm btn-primary">Tambah Data</a>
+                                        <a href="tambah-bahanbaku.php" class="btn btn-sm btn-primary">Tambah Data</a>
                                     </div>
                                 </div>
                                 <div class="card-body">
@@ -51,12 +51,10 @@
                                         <thead class="thead-light text-center">
                                             <tr>
                                                 <th width=6%>No</th>
-                                                <th>Nama</th>
-                                                <th>Alamat</th>
-                                                <th>Username</th>
-                                                <th>Password</th>
-                                                <th>Email</th>
-                                                <th>Jabatan</th>
+                                                <th>Nama Bahan Baku</th>
+                                                <th>Satuan</th>
+                                                <th>Harga</th>
+                                                <th>Supplier</th>
                                                 <th width=16%></th>
                                             </tr>
                                         </thead>
@@ -65,7 +63,7 @@
                                             include "../../koneksi.php";
 
                                             $no = 1;
-                                            $data = mysqli_query($koneksi, "SELECT * FROM user");
+                                            $data = mysqli_query($koneksi, "SELECT b.id_bahanbaku,b.nama_bahanbaku, b.satuan_bahanbaku,b.harga,s.nama_supplier FROM bahanbaku b JOIN supplier s WHERE b.id_supplier = s.id_supplier");
                                             if (mysqli_num_rows($data) == 0) {
                                                 ?>
                                                 <tr>
@@ -77,16 +75,14 @@
                                                         ?>
                                                     <tr>
                                                         <td class="text-center align-middle"><?php echo $no++; ?></td>
-                                                        <td class="align-middle"><?php echo $item['nama']; ?></td>
-                                                        <td class="align-middle"><?php echo $item['alamat']; ?></td>
-                                                        <td class="align-middle"><?php echo $item['username']; ?></td>
-                                                        <td class="align-middle"><?php echo $item['password']; ?></td>
-                                                        <td class="align-middle"><?php echo $item['email']; ?></td>
-                                                        <td class="align-middle"><?php echo $item['jabatan']; ?></td>
+                                                        <td class="align-middle"><?php echo $item['nama_bahanbaku']; ?></td>
+                                                        <td class="align-middle"><?php echo $item['satuan_bahanbaku']; ?></td>
+                                                        <td class="align-middle">Rp. <?php echo $item['harga']; ?></td>
+                                                        <td class="align-middle"><?php echo $item['nama_supplier']; ?></td>
                                                         <td class="text-center">
-                                                            <a href="ubah-pengguna.php?id=<?php echo $item['id_user'] ?>" class="btn btn-info btn-sm mx-1 float-left">Ubah</a>
+                                                            <a href="ubah-bahanbaku.php?id=<?php echo $item['id_bahanbaku'] ?>" class="btn btn-info btn-sm mx-1 float-left">Ubah</a>
 
-                                                            <form action="hapus-pengguna.php?id=<?php echo $item['id_user'] ?>" method="post">
+                                                            <form action="hapus-bahanbaku.php?id=<?php echo $item['id_bahanbaku'] ?>" method="post">
                                                                 <button type="submit" class="btn btn-danger btn-sm mx-1 float-left">Hapus</button>
                                                             </form>
                                                         </td>
@@ -128,9 +124,9 @@
 
     <?php include '../../layout/js.php' ?>
     <script>
-    $(document).ready(function() {
-        $('#Table').DataTable();
-    } );
+        $(document).ready(function() {
+            $('#Table').DataTable();
+        });
     </script>
 
 </body>

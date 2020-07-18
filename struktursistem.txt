@@ -3,6 +3,7 @@ Kepala Gudang :
 - produk (tambah, ubah, delete)
 - supplier (tambah, ubah, delete)
 - bahan baku (tambah, ubah, delete)
+
 - pemesanan bahan baku (tambah, ubah, delete)
 - pengadaan (tambah, ubah, delete)
 - monitoring persediaan bahan baku

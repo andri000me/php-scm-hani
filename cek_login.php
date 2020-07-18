@@ -14,13 +14,15 @@ if ($cek > 0) {
     $data = mysqli_fetch_assoc($login);
 
     //jika login sebagai admin
-    if ($data['hak_akses'] == "manajer") {
+    if ($data['hak_akses'] == "distribusi") {
         //buat session
         $_SESSION['username'] = $username;
-        $_SESSION['hak_akses'] = "manajer";
+        $_SESSION['hak_akses'] = "distribusi";
+        $_SESSION['nama'] = $data['nama'];
+        $_SESSION['jabatan'] = $data['jabatan'];
 
         //alihkan
-        header("location:manajer/");
+        header("location:pages/distribusi/");
     } else if ($data['hak_akses'] == "admin") {
         //buat session
         $_SESSION['username'] = $username;
