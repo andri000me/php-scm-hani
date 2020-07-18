@@ -13,10 +13,10 @@
 - Login
 
 ### Kepala Gudang :
-- user (tambah, ubah, delete) *done*
-- produk (tambah, ubah, delete) *done*
-- supplier (tambah, ubah, delete) *done*
-- bahan baku (tambah, ubah, delete) *done*
+- user (tambah, ubah, delete) :: *done*
+- produk (tambah, ubah, delete) :: *done*
+- supplier (tambah, ubah, delete) :: *done*
+- bahan baku (tambah, ubah, delete) :: *done*
 - pemesanan bahan baku (tambah, ubah, delete)
 - pengadaan (tambah, ubah, delete)
 - monitoring persediaan bahan baku
@@ -24,8 +24,8 @@
 - peramalan (tambah, ubah, delete)
 
 ### manajer distribusi
-- kendaraan (tambah, ubah, delete) *done*
-- distribusi (tambah, ubah, delete) *done*
+- kendaraan (tambah, ubah, delete) :: *done*
+- distribusi (tambah, ubah, delete) :: *done*
 
 ### manajer produksi
 - produksi (ubah, delete) 
