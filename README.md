@@ -18,10 +18,10 @@
 - supplier (tambah, ubah, delete) :: *done*
 - bahan baku (tambah, ubah, delete) :: *done*
 - pemesanan bahan baku (tambah, ubah, delete)
-- pengadaan (tambah, ubah, delete)
+- pengadaan (tambah, ubah, delete) :: *done*
 - monitoring persediaan bahan baku
 - monitoring produksi
-- peramalan (tambah, ubah, delete)
+- peramalan (tambah, ubah, delete) :: *done*
 
 ### Manajer Distribusi
 - kendaraan (tambah, ubah, delete) :: *done*
@@ -31,6 +31,9 @@
 - produksi (ubah, delete) 
 
 ### Manajer Marketing
-- pemesanan produk (tambah, ubah, delete) :: *done tambah*
+- pemesanan produk (tambah, ubah, delete) :: *done premature* *untuk detailnya masih problem, hapusnya belum* 
 
+## Problem :
+Data pada select option masih nampil error,
+Password belum di HASH
 

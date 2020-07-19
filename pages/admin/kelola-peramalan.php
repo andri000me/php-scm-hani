@@ -34,7 +34,7 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Kelola Bahan Baku</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Kelola Peramalan</h1>
                     </div>
 
                     <!-- Content Row -->
@@ -43,7 +43,7 @@
                             <div class="card mb-5">
                                 <div class="card-header">
                                     <div class="nav-item">
-                                        <a href="tambah-bahanbaku.php" class="btn btn-sm btn-primary">Tambah Data</a>
+                                        <a href="tambah-peramalan.php" class="btn btn-sm btn-primary">Tambah Peramalan</a>
                                     </div>
                                 </div>
                                 <div class="card-body">
@@ -51,11 +51,10 @@
                                         <thead class="thead-light text-center">
                                             <tr>
                                                 <th width=6%>No</th>
+                                                <th>Bulan</th>
                                                 <th>Nama Bahan Baku</th>
-                                                <th>Satuan</th>
-                                                <th width=11%>Harga</th>
-                                                <th>Supplier</th>
-                                                <th width=16%></th>
+                                                <th>Hasil</th>
+                                                <th width=23%></th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -63,7 +62,7 @@
                                             include "../../koneksi.php";
 
                                             $no = 1;
-                                            $data = mysqli_query($koneksi, "SELECT b.id_bahanbaku,b.nama_bahanbaku, b.satuan_bahanbaku,b.harga,s.nama_supplier FROM bahanbaku b JOIN supplier s WHERE b.id_supplier = s.id_supplier");
+                                            $data = mysqli_query($koneksi, "SELECT * FROM peramalan p JOIN bahanbaku b WHERE p.id_bahanbaku = b.id_bahanbaku");
                                             if (mysqli_num_rows($data) == 0) {
                                                 ?>
                                                 <tr>
@@ -75,14 +74,14 @@
                                                         ?>
                                                     <tr>
                                                         <td class="text-center align-middle"><?php echo $no++; ?></td>
+                                                        <td class="align-middle"><?php echo $item['bulan']; ?></td>
                                                         <td class="align-middle"><?php echo $item['nama_bahanbaku']; ?></td>
-                                                        <td class="align-middle"><?php echo $item['satuan_bahanbaku']; ?></td>
-                                                        <td class="align-middle">Rp. <?php echo $item['harga']; ?></td>
-                                                        <td class="align-middle"><?php echo $item['nama_supplier']; ?></td>
-                                                        <td class="text-center align-middle">
-                                                            <a href="ubah-bahanbaku.php?id=<?php echo $item['id_bahanbaku'] ?>" class="btn btn-info btn-sm mx-1 float-left">Ubah</a>
+                                                        <td class="align-middle"><?php echo $item['hasil']; ?></td>
+                                                        <td class="text-center">
+                                                            <a href="ubah-peramalan.php?id=<?php echo $item['id_peramalan'] ?>" class="btn btn-info btn-sm mx-1 float-left">Ubah</a>
+                                                            <a href="detail-peramalan.php?id=<?php echo $item['id_peramalan'] ?>" class="btn btn-success btn-sm mx-1 float-left">Detail</a>
 
-                                                            <form action="hapus-bahanbaku.php?id=<?php echo $item['id_bahanbaku'] ?>" method="post">
+                                                            <form action="hapus-peramalan.php?id=<?php echo $item['id_peramalan'] ?>" method="post">
                                                                 <button type="submit" class="btn btn-danger btn-sm mx-1 float-left">Hapus</button>
                                                             </form>
                                                         </td>

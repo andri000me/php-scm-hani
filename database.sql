@@ -18,36 +18,27 @@ USE `db_cvmitra`;
 
 -- Dumping structure for table db_cvmitra.bahanbaku
 CREATE TABLE IF NOT EXISTS `bahanbaku` (
-  `id_bahanbaku` int(11) NOT NULL AUTO_INCREMENT,
-  `nama_bahanbaku` varchar(20) NOT NULL,
+  `id_bahanbaku` varchar(6) NOT NULL,
+  `nama_bahanbaku` varchar(40) NOT NULL,
   `satuan_bahanbaku` varchar(10) NOT NULL,
   `harga` varchar(20) NOT NULL,
   `id_supplier` int(11) NOT NULL,
   PRIMARY KEY (`id_bahanbaku`),
   KEY `id_supplier` (`id_supplier`),
   CONSTRAINT `bahanbaku_ibfk_2` FOREIGN KEY (`id_supplier`) REFERENCES `supplier` (`id_supplier`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumping data for table db_cvmitra.bahanbaku: ~2 rows (approximately)
+-- Dumping data for table db_cvmitra.bahanbaku: ~6 rows (approximately)
 DELETE FROM `bahanbaku`;
 /*!40000 ALTER TABLE `bahanbaku` DISABLE KEYS */;
 INSERT INTO `bahanbaku` (`id_bahanbaku`, `nama_bahanbaku`, `satuan_bahanbaku`, `harga`, `id_supplier`) VALUES
-	(1, 'Spon Biasa', 'Pcs', '1500', 3),
-	(2, 'Spon Pylon', 'Pcs', '2000', 2);
+	('SB4', 'Spon Biasa', 'Pcs', '1123', 4),
+	('SL3', 'Spon Lapis Pylon Pake Lapis 2 Milipylon', 'Pcs', '1750', 3),
+	('SP2', 'Spon Pylon', 'Pcs', '1510', 2),
+	('SS4', 'Spon Standar', 'Pcs', '1123', 4),
+	('SS6', 'Spon Semi Super Keras', 'Pcs', '1510', 3),
+	('SW5', 'Spon Warna Biasa', 'Pcs', '1450', 4);
 /*!40000 ALTER TABLE `bahanbaku` ENABLE KEYS */;
-
--- Dumping structure for table db_cvmitra.barang
-CREATE TABLE IF NOT EXISTS `barang` (
-  `id` int(10) DEFAULT NULL,
-  `nama` varchar(20) DEFAULT NULL,
-  `harga` int(11) DEFAULT NULL,
-  `jumlah` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- Dumping data for table db_cvmitra.barang: ~0 rows (approximately)
-DELETE FROM `barang`;
-/*!40000 ALTER TABLE `barang` DISABLE KEYS */;
-/*!40000 ALTER TABLE `barang` ENABLE KEYS */;
 
 -- Dumping structure for table db_cvmitra.detail_distribusi
 CREATE TABLE IF NOT EXISTS `detail_distribusi` (
@@ -76,7 +67,7 @@ DELETE FROM `detail_distribusi`;
 CREATE TABLE IF NOT EXISTS `detail_pengadaan` (
   `id_detail_pengadaan` int(11) NOT NULL,
   `id_pengadaan` int(11) NOT NULL,
-  `id_bahanbaku` int(11) NOT NULL,
+  `id_bahanbaku` varchar(6) NOT NULL,
   `qty` varchar(12) DEFAULT NULL,
   PRIMARY KEY (`id_detail_pengadaan`),
   KEY `id_pengadaan` (`id_pengadaan`),
@@ -93,7 +84,7 @@ DELETE FROM `detail_pengadaan`;
 -- Dumping structure for table db_cvmitra.detail_persediaan
 CREATE TABLE IF NOT EXISTS `detail_persediaan` (
   `id_detail_persediaan` int(11) NOT NULL,
-  `id_bahanbaku` int(11) NOT NULL,
+  `id_bahanbaku` varchar(6) NOT NULL,
   `id_persediaan` int(11) NOT NULL,
   `tanggal_masuk` date NOT NULL,
   `jumlah_masuk` int(11) NOT NULL,
@@ -118,7 +109,7 @@ CREATE TABLE IF NOT EXISTS `detail_pesanbahanbaku` (
   `total` varchar(20) NOT NULL,
   `tanggal_diterima` date NOT NULL,
   `id_pesanbahanbaku` int(11) NOT NULL,
-  `id_bahanbaku` int(11) NOT NULL,
+  `id_bahanbaku` varchar(6) NOT NULL,
   PRIMARY KEY (`id_detail_pesanbahanbaku`),
   KEY `id_pesanbahanbaku` (`id_pesanbahanbaku`),
   KEY `id_bahanbaku` (`id_bahanbaku`),
@@ -157,7 +148,7 @@ INSERT INTO `detail_pesanproduk` (`id_detail_pesanproduk`, `qty`, `ukuran`, `ket
 CREATE TABLE IF NOT EXISTS `detail_produk` (
   `id_detail_produk` int(11) NOT NULL,
   `id_produk` varchar(10) NOT NULL,
-  `id_bahanbaku` int(11) NOT NULL,
+  `id_bahanbaku` varchar(6) NOT NULL,
   PRIMARY KEY (`id_detail_produk`),
   KEY `id_produk` (`id_produk`),
   KEY `id_bahanbaku` (`id_bahanbaku`),
@@ -179,7 +170,7 @@ CREATE TABLE IF NOT EXISTS `detail_produksi` (
   `tanggal_mulai` date NOT NULL,
   `tanggal_selesai` date NOT NULL,
   `id_produk` varchar(10) NOT NULL,
-  `id_bahanbaku` int(11) NOT NULL,
+  `id_bahanbaku` varchar(6) NOT NULL,
   PRIMARY KEY (`id_detail_produksi`),
   KEY `id_pesanproduk` (`id_pesanproduk`),
   KEY `id_produk` (`id_produk`),
@@ -229,13 +220,12 @@ INSERT INTO `kendaraan` (`no_polisi`, `jenis`, `kapasitas`) VALUES
 CREATE TABLE IF NOT EXISTS `pengadaan` (
   `id_pengadaan` int(11) NOT NULL,
   `tgl_pengadaan` date NOT NULL,
-  `periode` varchar(10) NOT NULL,
-  `status_pengiriman` enum('DIPROSES','DALAM PERJALANAN','SAMPAI') NOT NULL,
-  `id_supplier` int(11) NOT NULL,
+  `periode` varchar(10) DEFAULT NULL,
+  `id_peramalan` int(11) NOT NULL,
   PRIMARY KEY (`id_pengadaan`),
-  KEY `id_supplier` (`id_supplier`),
-  CONSTRAINT `pengadaan_ibfk_1` FOREIGN KEY (`id_supplier`) REFERENCES `supplier` (`id_supplier`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  KEY `id_peramalan` (`id_peramalan`),
+  CONSTRAINT `pengadaan_ibfk_1` FOREIGN KEY (`id_peramalan`) REFERENCES `peramalan` (`id_peramalan`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 -- Dumping data for table db_cvmitra.pengadaan: ~0 rows (approximately)
 DELETE FROM `pengadaan`;
@@ -263,16 +253,26 @@ DELETE FROM `penjualan`;
 CREATE TABLE IF NOT EXISTS `peramalan` (
   `id_peramalan` int(11) NOT NULL,
   `bulan` varchar(30) NOT NULL,
-  `hasil` varchar(10) NOT NULL,
-  `id_bahanbaku` int(11) DEFAULT NULL,
+  `hasil` int(11) DEFAULT '0',
+  `id_bahanbaku` varchar(6) NOT NULL,
+  `id_user` int(11) NOT NULL,
   PRIMARY KEY (`id_peramalan`),
-  KEY `peramalan_ibfk_1` (`id_bahanbaku`),
-  CONSTRAINT `peramalan_ibfk_1` FOREIGN KEY (`id_bahanbaku`) REFERENCES `bahanbaku` (`id_bahanbaku`)
+  KEY `id_user` (`id_user`),
+  KEY `id_bahanbaku` (`id_bahanbaku`),
+  CONSTRAINT `peramalan_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`),
+  CONSTRAINT `peramalan_ibfk_2` FOREIGN KEY (`id_bahanbaku`) REFERENCES `bahanbaku` (`id_bahanbaku`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumping data for table db_cvmitra.peramalan: ~0 rows (approximately)
+-- Dumping data for table db_cvmitra.peramalan: ~6 rows (approximately)
 DELETE FROM `peramalan`;
 /*!40000 ALTER TABLE `peramalan` DISABLE KEYS */;
+INSERT INTO `peramalan` (`id_peramalan`, `bulan`, `hasil`, `id_bahanbaku`, `id_user`) VALUES
+	(1, 'Januari', 664, 'SB4', 1),
+	(2, 'Februari', 650, 'SB4', 1),
+	(3, 'Maret', 321, 'SB4', 1),
+	(4, 'Mei', 90, 'SB4', 1),
+	(5, 'Juni', 200, 'SB4', 1),
+	(6, 'April', 463, 'SB4', 1);
 /*!40000 ALTER TABLE `peramalan` ENABLE KEYS */;
 
 -- Dumping structure for table db_cvmitra.persediaan
@@ -280,7 +280,7 @@ CREATE TABLE IF NOT EXISTS `persediaan` (
   `id_persediaan` int(11) NOT NULL,
   `total_stok` int(11) NOT NULL,
   `safety_stok` int(11) NOT NULL,
-  `id_bahanbaku` int(11) NOT NULL,
+  `id_bahanbaku` varchar(6) NOT NULL,
   PRIMARY KEY (`id_persediaan`),
   KEY `id_bahanbaku` (`id_bahanbaku`),
   CONSTRAINT `persediaan_ibfk_1` FOREIGN KEY (`id_bahanbaku`) REFERENCES `bahanbaku` (`id_bahanbaku`)
@@ -336,7 +336,7 @@ CREATE TABLE IF NOT EXISTS `produk` (
   PRIMARY KEY (`id_produk`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumping data for table db_cvmitra.produk: ~6 rows (approximately)
+-- Dumping data for table db_cvmitra.produk: ~10 rows (approximately)
 DELETE FROM `produk`;
 /*!40000 ALTER TABLE `produk` DISABLE KEYS */;
 INSERT INTO `produk` (`id_produk`, `nama_produk`, `satuan_produk`, `harga`) VALUES
@@ -384,7 +384,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   PRIMARY KEY (`id_user`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table db_cvmitra.user: ~0 rows (approximately)
+-- Dumping data for table db_cvmitra.user: ~4 rows (approximately)
 DELETE FROM `user`;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 INSERT INTO `user` (`id_user`, `nama`, `username`, `password`, `email`, `hak_akses`, `alamat`, `jabatan`) VALUES
