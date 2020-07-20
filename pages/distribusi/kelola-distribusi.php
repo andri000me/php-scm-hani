@@ -53,6 +53,7 @@
                                                 <th width=6%>No</th>
                                                 <th>No Pemesanan</th>
                                                 <th>No Polisi</th>
+                                                <th>Kota / Wilayah</th>
                                                 <th width=23%></th>
                                             </tr>
                                         </thead>
@@ -65,7 +66,7 @@
                                             if (mysqli_num_rows($data) == 0) {
                                                 ?>
                                                 <tr>
-                                                    <td colspan="7" class="text-center font-weight-bold">Data Kosong</td>
+                                                    <td colspan="4" class="text-center font-weight-bold">Data Kosong</td>
                                                 </tr>
                                                 <?php
                                                 } else {
@@ -76,6 +77,7 @@
                                                         <!-- <td class="align-middle"><?php echo date('m-d-Y', strtotime($item['tanggal_pemesanan'])); ?></td> -->
                                                         <td class="align-middle"><?php echo $item['id_pesanan']; ?></td>
                                                         <td class="align-middle"><?php echo $item['no_polisi']; ?></td>
+                                                        <td class="align-middle"><?php echo $item['kota_wilayah']; ?></td>
                                                         <td class="text-center">
                                                             <a href="ubah-distribusi.php?id=<?php echo $item['id_distribusi'] ?>" class="btn btn-info btn-sm mx-1 float-left">Ubah</a>
                                                             <a href="detail-distribusi.php?id=<?php echo $item['id_distribusi'] ?>" class="btn btn-success btn-sm mx-1 float-left">Detail</a>
