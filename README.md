@@ -31,7 +31,7 @@
 - produksi (ubah, delete) 
 
 ### Manajer Marketing
-- pemesanan produk (tambah, ubah, delete) :: *done premature* *untuk detailnya masih problem, hapusnya belum* 
+- pemesanan produk (tambah, ubah, delete) :: *done 100%* 
 
 ## Problem :
 Data pada select option masih nampil error,
