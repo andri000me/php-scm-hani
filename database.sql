@@ -45,17 +45,13 @@ CREATE TABLE IF NOT EXISTS `detail_distribusi` (
   `id_detail_distribusi` int(11) NOT NULL,
   `tanggal_pengiriman` date NOT NULL,
   `tanggal_sampai` date NOT NULL,
-  `kota` varchar(10) NOT NULL,
   `id_distribusi` int(11) DEFAULT NULL,
-  `id_produk` varchar(10) DEFAULT NULL,
-  `no_polisi` varchar(10) DEFAULT NULL,
+  `id_pesanproduk` int(11) NOT NULL,
   PRIMARY KEY (`id_detail_distribusi`),
   KEY `id_distribusi` (`id_distribusi`),
-  KEY `id_produk` (`id_produk`),
-  KEY `no_polisi` (`no_polisi`),
+  KEY `id_pesanproduk` (`id_pesanproduk`),
   CONSTRAINT `detail_distribusi_ibfk_1` FOREIGN KEY (`id_distribusi`) REFERENCES `distribusi` (`id_distribusi`),
-  CONSTRAINT `detail_distribusi_ibfk_2` FOREIGN KEY (`id_produk`) REFERENCES `produk` (`id_produk`),
-  CONSTRAINT `detail_distribusi_ibfk_3` FOREIGN KEY (`no_polisi`) REFERENCES `kendaraan` (`no_polisi`)
+  CONSTRAINT `detail_distribusi_ibfk_2` FOREIGN KEY (`id_pesanproduk`) REFERENCES `pesanproduk` (`id_pesanproduk`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Dumping data for table db_cvmitra.detail_distribusi: ~0 rows (approximately)
@@ -187,14 +183,14 @@ DELETE FROM `detail_produksi`;
 
 -- Dumping structure for table db_cvmitra.distribusi
 CREATE TABLE IF NOT EXISTS `distribusi` (
-  `id_distribusi` int(11) NOT NULL AUTO_INCREMENT,
-  `id_pesanproduk` int(11) NOT NULL,
-  `no_polisi` varchar(20) NOT NULL,
+  `id_distribusi` int(11) NOT NULL,
   `kota_wilayah` varchar(20) DEFAULT NULL,
+  `no_polisi` varchar(20) NOT NULL,
+  `id_user` int(11) NOT NULL,
   PRIMARY KEY (`id_distribusi`),
-  KEY `id_pesanproduk` (`id_pesanproduk`),
+  KEY `id_user` (`id_user`),
   KEY `no_polisi` (`no_polisi`),
-  CONSTRAINT `distribusi_ibfk_1` FOREIGN KEY (`id_pesanproduk`) REFERENCES `pesanproduk` (`id_pesanproduk`),
+  CONSTRAINT `distribusi_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `pesanproduk` (`id_user`),
   CONSTRAINT `distribusi_ibfk_2` FOREIGN KEY (`no_polisi`) REFERENCES `kendaraan` (`no_polisi`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -211,7 +207,7 @@ CREATE TABLE IF NOT EXISTS `kendaraan` (
   PRIMARY KEY (`no_polisi`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumping data for table db_cvmitra.kendaraan: ~0 rows (approximately)
+-- Dumping data for table db_cvmitra.kendaraan: ~2 rows (approximately)
 DELETE FROM `kendaraan`;
 /*!40000 ALTER TABLE `kendaraan` DISABLE KEYS */;
 INSERT INTO `kendaraan` (`no_polisi`, `jenis`, `kapasitas`) VALUES

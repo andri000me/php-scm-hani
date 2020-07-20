@@ -47,13 +47,29 @@
                                     <!-- Content -->
                                     <form action="tambah-distribusi-proses.php" method="post">
                                         <div class="form-group">
-                                            <label for="tanggal_pemesanan">Tanggal Pemesanan</label>
-                                            <input type="date" name="tanggal_pemesanan" id="tanggal_pemesanan" placeholder="Isikan Tanggal Pemesanan" class="form-control" required />
+                                            <input type="hidden" name="id_user" id="id_user" value="<?php echo $_SESSION['id_user']; ?>">
+                                            <label for="id_pesanproduk">No Pesanan Produk</label>
+                                            <select name="id_pesanproduk" id="id_pesanproduk" class="custom-select">
+                                                <option selected disabled value="">Pilih No Pesanan Produk :</option>
+                                                <?php
+                                                include "../../koneksi.php";
+
+                                                $sql = mysqli_query($koneksi, "SELECT * FROM pesanproduk");
+                                                while ($data = mysqli_fetch_assoc($sql)) {
+                                                    ?>
+                                                    <option value="<?php echo $data['id_pesanproduk']; ?>"><?php echo $data['id_pesanproduk']; ?> - <?php echo strtoupper($data['nama_customer']); ?></option>
+
+                                                <?php
+                                                }
+                                                ?>
+                                            </select>
                                         </div>
+                                        <!-- tanggal pengiriman -->
                                         <div class="form-group">
-                                            <label for="nama_customer">Nama Customer</label>
-                                            <input type="text" name="nama_customer" id="nama_customer" placeholder="Isikan Nama Customer" class="form-control" required />
+                                            <label for="tanggal_pengiriman">Tanggal Pengiriman</label>
+                                            <input type="text" name="tanggal_pengiriman" id="tanggal_pengiriman" placeholder="Isikan Tanggal Pengiriman" class="form-control" required />
                                         </div>
+                                        <!-- hitung estimasi tanggal sampai -->
                                         <hr>
                                         <div class="form-group">
                                             <input type="submit" class="btn btn-primary" value="Simpan" />
