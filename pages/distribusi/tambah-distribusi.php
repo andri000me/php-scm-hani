@@ -67,7 +67,31 @@
                                         <!-- tanggal pengiriman -->
                                         <div class="form-group">
                                             <label for="tanggal_pengiriman">Tanggal Pengiriman</label>
-                                            <input type="text" name="tanggal_pengiriman" id="tanggal_pengiriman" placeholder="Isikan Tanggal Pengiriman" class="form-control" required />
+                                            <input type="date" name="tanggal_pengiriman" id="tanggal_pengiriman" placeholder="Isikan Tanggal Pengiriman" class="form-control" required />
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <input type="hidden" name="id_user" id="id_user" value="<?php echo $_SESSION['id_user']; ?>">
+                                            <label for="no_polisi">Kurir Kendaraaan</label>
+                                            <select name="no_polisi" id="no_polisi" class="custom-select">
+                                                <option selected disabled value="">Pilih Kendaraaan :</option>
+                                                <?php
+                                                include "../../koneksi.php";
+
+                                                $sql = mysqli_query($koneksi, "SELECT * FROM kendaraan");
+                                                while ($data = mysqli_fetch_assoc($sql)) {
+                                                    ?>
+                                                    <option value="<?php echo $data['no_polisi']; ?>"><?php echo $data['no_polisi']; ?> - <?php echo strtoupper($data['jenis']); ?></option>
+
+                                                <?php
+                                                }
+                                                ?>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="kota_wilayah">Kota / Wilayah</label>
+                                            <input type="text" name="kota_wilayah" id="kota_wilayah" placeholder="Isikan Kota / Wilayah" class="form-control" required />
                                         </div>
                                         <!-- hitung estimasi tanggal sampai -->
                                         <hr>

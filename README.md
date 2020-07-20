@@ -18,14 +18,14 @@
 - supplier (tambah, ubah, delete) :: *done*
 - bahan baku (tambah, ubah, delete) :: *done*
 - pemesanan bahan baku (tambah, ubah, delete)
-- pengadaan (tambah, ubah, delete) :: *done*
+- pengadaan (tambah, ubah, delete) :: *done - ubah belum* 
 - monitoring persediaan bahan baku
 - monitoring produksi
 - peramalan (tambah, ubah, delete) :: *done*
 
 ### Manajer Distribusi
 - kendaraan (tambah, ubah, delete) :: *done*
-- distribusi (tambah, ubah, delete) :: *done premature*
+- distribusi (tambah, ubah, delete) :: *done 100%*
 
 ### Manajer Produksi
 - produksi (ubah, delete) 

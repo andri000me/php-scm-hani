@@ -190,7 +190,7 @@ CREATE TABLE IF NOT EXISTS `distribusi` (
   PRIMARY KEY (`id_distribusi`),
   KEY `id_user` (`id_user`),
   KEY `no_polisi` (`no_polisi`),
-  CONSTRAINT `distribusi_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `pesanproduk` (`id_user`),
+  CONSTRAINT `distribusi_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`),
   CONSTRAINT `distribusi_ibfk_2` FOREIGN KEY (`no_polisi`) REFERENCES `kendaraan` (`no_polisi`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

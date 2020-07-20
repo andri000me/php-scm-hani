@@ -62,7 +62,7 @@
                                             include "../../koneksi.php";
 
                                             $no = 1;
-                                            $data = mysqli_query($koneksi, "SELECT * FROM distribusi");
+                                            $data = mysqli_query($koneksi, "SELECT * FROM distribusi JOIN detail_distribusi WHERE distribusi.id_distribusi = detail_distribusi.id_distribusi");
                                             if (mysqli_num_rows($data) == 0) {
                                                 ?>
                                                 <tr>
@@ -75,7 +75,7 @@
                                                     <tr>
                                                         <td class="text-center align-middle"><?php echo $no++; ?></td>
                                                         <!-- <td class="align-middle"><?php echo date('m-d-Y', strtotime($item['tanggal_pemesanan'])); ?></td> -->
-                                                        <td class="align-middle"><?php echo $item['id_pesanan']; ?></td>
+                                                        <td class="align-middle"><?php echo $item['id_pesanproduk']; ?></td>
                                                         <td class="align-middle"><?php echo $item['no_polisi']; ?></td>
                                                         <td class="align-middle"><?php echo $item['kota_wilayah']; ?></td>
                                                         <td class="text-center">

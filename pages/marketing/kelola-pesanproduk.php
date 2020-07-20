@@ -70,11 +70,13 @@
                                                 <?php
                                                 } else {
                                                     while ($item = mysqli_fetch_array($data)) {
+                                                        $tanggal_pemesanan = date('d-m-Y', strtotime($item['tanggal_pemesanan']));
+
                                                         ?>
                                                     <tr>
                                                         <td class="text-center align-middle"><?php echo $no++; ?></td>
-                                                        <td class="align-middle"><?php echo $item['tanggal_pemesanan']; ?></td>
-                                                        <td class="align-middle"><?php echo $item['nama_customer']; ?></td>
+                                                        <td class="align-middle"><?php echo $tanggal_pemesanan; ?></td>
+                                                        <td class="align-middle"><?php echo strtoupper($item['nama_customer']); ?></td>
                                                         <td class="text-center">
                                                             <a href="ubah-pesanproduk.php?id=<?php echo $item['id_pesanproduk'] ?>" class="btn btn-info btn-sm mx-1 float-left">Ubah</a>
                                                             <a href="detail-pesanproduk.php?id=<?php echo $item['id_pesanproduk'] ?>" class="btn btn-success btn-sm mx-1 float-left">Detail</a>
