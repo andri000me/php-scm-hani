@@ -25,7 +25,7 @@
 
 ### Manajer Distribusi
 - kendaraan (tambah, ubah, delete) :: *done*
-- distribusi (tambah, ubah, delete) :: *done*
+- distribusi (tambah, ubah, delete) :: *done premature*
 
 ### Manajer Produksi
 - produksi (ubah, delete) 

@@ -62,7 +62,7 @@
                                             include "../../koneksi.php";
 
                                             $no = 1;
-                                            $data = mysqli_query($koneksi, "SELECT * FROM distribusi");
+                                            $data = mysqli_query($koneksi, "SELECT * FROM kendaraan");
                                             if (mysqli_num_rows($data) == 0) {
                                                 ?>
                                                 <tr>

@@ -49,7 +49,8 @@
                                         include "../../koneksi.php";
 
                                         //$no = 1;
-                                        $data = mysqli_query($koneksi, "SELECT p.id_pesanproduk,p.tanggal_pemesanan,p.nama_customer FROM pesanproduk p JOIN detail_pesanproduk dp WHERE p.id_pesanproduk = dp.id_pesanproduk");
+                                        $id = $_GET['id'];
+                                        $data = mysqli_query($koneksi, "SELECT p.id_pesanproduk,p.tanggal_pemesanan,p.nama_customer FROM pesanproduk p JOIN detail_pesanproduk dp WHERE p.id_pesanproduk = dp.id_pesanproduk AND p.id_pesanproduk = $id ORDER BY p.id_pesanproduk ASC");
                                         if (!$data) {
                                             ?>
                                             <tr>
@@ -87,7 +88,7 @@
                                                             <tbody>
                                                                 <?php
                                                                         $no = 1;
-                                                                        $data = mysqli_query($koneksi, "SELECT * FROM produk p JOIN detail_pesanproduk dp WHERE p.id_produk = dp.id_produk");
+                                                                        $data = mysqli_query($koneksi, "SELECT * FROM produk p JOIN detail_pesanproduk dp WHERE p.id_produk = dp.id_produk AND p.id_produk = dp.id_produk AND id_pesanproduk = $id");
                                                                         if (!$data) {
                                                                             ?>
                                                                     <tr>

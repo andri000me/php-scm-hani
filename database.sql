@@ -188,23 +188,25 @@ DELETE FROM `detail_produksi`;
 -- Dumping structure for table db_cvmitra.distribusi
 CREATE TABLE IF NOT EXISTS `distribusi` (
   `id_distribusi` int(11) NOT NULL AUTO_INCREMENT,
-  `tanggal_pemesanan` date NOT NULL,
-  `nama_customer` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`id_distribusi`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+  `id_pesanproduk` int(11) NOT NULL,
+  `no_polisi` varchar(20) NOT NULL,
+  `kota_wilayah` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`id_distribusi`),
+  KEY `id_pesanproduk` (`id_pesanproduk`),
+  KEY `no_polisi` (`no_polisi`),
+  CONSTRAINT `distribusi_ibfk_1` FOREIGN KEY (`id_pesanproduk`) REFERENCES `pesanproduk` (`id_pesanproduk`),
+  CONSTRAINT `distribusi_ibfk_2` FOREIGN KEY (`no_polisi`) REFERENCES `kendaraan` (`no_polisi`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumping data for table db_cvmitra.distribusi: ~2 rows (approximately)
+-- Dumping data for table db_cvmitra.distribusi: ~0 rows (approximately)
 DELETE FROM `distribusi`;
 /*!40000 ALTER TABLE `distribusi` DISABLE KEYS */;
-INSERT INTO `distribusi` (`id_distribusi`, `tanggal_pemesanan`, `nama_customer`) VALUES
-	(1, '2020-07-18', 'asep'),
-	(2, '2020-07-22', 'asep');
 /*!40000 ALTER TABLE `distribusi` ENABLE KEYS */;
 
 -- Dumping structure for table db_cvmitra.kendaraan
 CREATE TABLE IF NOT EXISTS `kendaraan` (
   `no_polisi` varchar(15) NOT NULL,
-  `jenis` varchar(10) NOT NULL,
+  `jenis` varchar(50) NOT NULL,
   `kapasitas` varchar(10) NOT NULL,
   PRIMARY KEY (`no_polisi`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -213,7 +215,8 @@ CREATE TABLE IF NOT EXISTS `kendaraan` (
 DELETE FROM `kendaraan`;
 /*!40000 ALTER TABLE `kendaraan` DISABLE KEYS */;
 INSERT INTO `kendaraan` (`no_polisi`, `jenis`, `kapasitas`) VALUES
-	('B 111 XZ', 'Mobil', '150');
+	('D 3082 ER', 'Jupiter Mx king 150', '1000'),
+	('D 5567 FW', 'Pickup Daihatsu Gran Max PU', '10000');
 /*!40000 ALTER TABLE `kendaraan` ENABLE KEYS */;
 
 -- Dumping structure for table db_cvmitra.pengadaan
@@ -225,7 +228,7 @@ CREATE TABLE IF NOT EXISTS `pengadaan` (
   PRIMARY KEY (`id_pengadaan`),
   KEY `id_peramalan` (`id_peramalan`),
   CONSTRAINT `pengadaan_ibfk_1` FOREIGN KEY (`id_peramalan`) REFERENCES `peramalan` (`id_peramalan`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Dumping data for table db_cvmitra.pengadaan: ~0 rows (approximately)
 DELETE FROM `pengadaan`;
@@ -382,7 +385,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `alamat` varchar(40) DEFAULT NULL,
   `jabatan` varchar(20) NOT NULL,
   PRIMARY KEY (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table db_cvmitra.user: ~4 rows (approximately)
 DELETE FROM `user`;

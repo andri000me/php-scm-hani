@@ -51,8 +51,8 @@
                                         <thead class="thead-light text-center">
                                             <tr>
                                                 <th width=6%>No</th>
-                                                <th>Tanggal Pemesanan</th>
-                                                <th>Nama Customer</th>
+                                                <th>No Pemesanan</th>
+                                                <th>No Polisi</th>
                                                 <th width=23%></th>
                                             </tr>
                                         </thead>
@@ -73,8 +73,9 @@
                                                         ?>
                                                     <tr>
                                                         <td class="text-center align-middle"><?php echo $no++; ?></td>
-                                                        <td class="align-middle"><?php echo date('m-d-Y', strtotime($item['tanggal_pemesanan'])); ?></td>
-                                                        <td class="align-middle"><?php echo $item['nama_customer']; ?></td>
+                                                        <!-- <td class="align-middle"><?php echo date('m-d-Y', strtotime($item['tanggal_pemesanan'])); ?></td> -->
+                                                        <td class="align-middle"><?php echo $item['id_pesanan']; ?></td>
+                                                        <td class="align-middle"><?php echo $item['no_polisi']; ?></td>
                                                         <td class="text-center">
                                                             <a href="ubah-distribusi.php?id=<?php echo $item['id_distribusi'] ?>" class="btn btn-info btn-sm mx-1 float-left">Ubah</a>
                                                             <a href="detail-distribusi.php?id=<?php echo $item['id_distribusi'] ?>" class="btn btn-success btn-sm mx-1 float-left">Detail</a>
