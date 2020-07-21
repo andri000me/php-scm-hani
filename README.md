@@ -28,7 +28,7 @@
 - distribusi (tambah, ubah, delete) :: *done 100%*
 
 ### Manajer Produksi
-- produksi (ubah, delete) 
+- produksi (tambah, ubah, delete) :: *done*
 
 ### Manajer Marketing
 - pemesanan produk (tambah, ubah, delete) :: *done 100%* 

@@ -42,7 +42,7 @@ INSERT INTO `bahanbaku` (`id_bahanbaku`, `nama_bahanbaku`, `satuan_bahanbaku`, `
 
 -- Dumping structure for table db_cvmitra.detail_distribusi
 CREATE TABLE IF NOT EXISTS `detail_distribusi` (
-  `id_detail_distribusi` int(11) NOT NULL,
+  `id_detail_distribusi` int(11) NOT NULL AUTO_INCREMENT,
   `tanggal_pengiriman` date NOT NULL,
   `tanggal_sampai` date NOT NULL,
   `id_distribusi` int(11) DEFAULT NULL,
@@ -52,16 +52,18 @@ CREATE TABLE IF NOT EXISTS `detail_distribusi` (
   KEY `id_pesanproduk` (`id_pesanproduk`),
   CONSTRAINT `detail_distribusi_ibfk_1` FOREIGN KEY (`id_distribusi`) REFERENCES `distribusi` (`id_distribusi`),
   CONSTRAINT `detail_distribusi_ibfk_2` FOREIGN KEY (`id_pesanproduk`) REFERENCES `pesanproduk` (`id_pesanproduk`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
--- Dumping data for table db_cvmitra.detail_distribusi: ~0 rows (approximately)
+-- Dumping data for table db_cvmitra.detail_distribusi: ~1 rows (approximately)
 DELETE FROM `detail_distribusi`;
 /*!40000 ALTER TABLE `detail_distribusi` DISABLE KEYS */;
+INSERT INTO `detail_distribusi` (`id_detail_distribusi`, `tanggal_pengiriman`, `tanggal_sampai`, `id_distribusi`, `id_pesanproduk`) VALUES
+	(1, '2020-07-21', '2020-07-27', 1, 4);
 /*!40000 ALTER TABLE `detail_distribusi` ENABLE KEYS */;
 
 -- Dumping structure for table db_cvmitra.detail_pengadaan
 CREATE TABLE IF NOT EXISTS `detail_pengadaan` (
-  `id_detail_pengadaan` int(11) NOT NULL,
+  `id_detail_pengadaan` int(11) NOT NULL AUTO_INCREMENT,
   `id_pengadaan` int(11) NOT NULL,
   `id_bahanbaku` varchar(6) NOT NULL,
   `qty` varchar(12) DEFAULT NULL,
@@ -70,11 +72,13 @@ CREATE TABLE IF NOT EXISTS `detail_pengadaan` (
   KEY `id_bahanbaku` (`id_bahanbaku`),
   CONSTRAINT `detail_pengadaan_ibfk_1` FOREIGN KEY (`id_pengadaan`) REFERENCES `pengadaan` (`id_pengadaan`),
   CONSTRAINT `detail_pengadaan_ibfk_2` FOREIGN KEY (`id_bahanbaku`) REFERENCES `bahanbaku` (`id_bahanbaku`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
--- Dumping data for table db_cvmitra.detail_pengadaan: ~0 rows (approximately)
+-- Dumping data for table db_cvmitra.detail_pengadaan: ~1 rows (approximately)
 DELETE FROM `detail_pengadaan`;
 /*!40000 ALTER TABLE `detail_pengadaan` DISABLE KEYS */;
+INSERT INTO `detail_pengadaan` (`id_detail_pengadaan`, `id_pengadaan`, `id_bahanbaku`, `qty`) VALUES
+	(1, 1, 'SB4', '398');
 /*!40000 ALTER TABLE `detail_pengadaan` ENABLE KEYS */;
 
 -- Dumping structure for table db_cvmitra.detail_persediaan
@@ -131,18 +135,18 @@ CREATE TABLE IF NOT EXISTS `detail_pesanproduk` (
   KEY `id_produk` (`id_produk`),
   CONSTRAINT `detail_pesanproduk_ibfk_1` FOREIGN KEY (`id_pesanproduk`) REFERENCES `pesanproduk` (`id_pesanproduk`),
   CONSTRAINT `detail_pesanproduk_ibfk_2` FOREIGN KEY (`id_produk`) REFERENCES `produk` (`id_produk`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
--- Dumping data for table db_cvmitra.detail_pesanproduk: ~0 rows (approximately)
+-- Dumping data for table db_cvmitra.detail_pesanproduk: ~1 rows (approximately)
 DELETE FROM `detail_pesanproduk`;
 /*!40000 ALTER TABLE `detail_pesanproduk` DISABLE KEYS */;
 INSERT INTO `detail_pesanproduk` (`id_detail_pesanproduk`, `qty`, `ukuran`, `keterangan`, `id_pesanproduk`, `id_produk`) VALUES
-	(2, 12, 42, 'Sepatu', 4, 'IS02');
+	(4, 30, 40, 'Sepatu', 4, 'IL01');
 /*!40000 ALTER TABLE `detail_pesanproduk` ENABLE KEYS */;
 
 -- Dumping structure for table db_cvmitra.detail_produk
 CREATE TABLE IF NOT EXISTS `detail_produk` (
-  `id_detail_produk` int(11) NOT NULL,
+  `id_detail_produk` int(11) NOT NULL AUTO_INCREMENT,
   `id_produk` varchar(10) NOT NULL,
   `id_bahanbaku` varchar(6) NOT NULL,
   PRIMARY KEY (`id_detail_produk`),
@@ -150,23 +154,33 @@ CREATE TABLE IF NOT EXISTS `detail_produk` (
   KEY `id_bahanbaku` (`id_bahanbaku`),
   CONSTRAINT `detail_produk_ibfk_1` FOREIGN KEY (`id_produk`) REFERENCES `produk` (`id_produk`),
   CONSTRAINT `detail_produk_ibfk_2` FOREIGN KEY (`id_bahanbaku`) REFERENCES `bahanbaku` (`id_bahanbaku`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
--- Dumping data for table db_cvmitra.detail_produk: ~0 rows (approximately)
+-- Dumping data for table db_cvmitra.detail_produk: ~10 rows (approximately)
 DELETE FROM `detail_produk`;
 /*!40000 ALTER TABLE `detail_produk` DISABLE KEYS */;
+INSERT INTO `detail_produk` (`id_detail_produk`, `id_produk`, `id_bahanbaku`) VALUES
+	(1, 'IA09', 'SB4'),
+	(2, 'IA07', 'SB4'),
+	(3, 'IA08', 'SP2'),
+	(4, 'IG04', 'SW5'),
+	(5, 'IL01', 'SS6'),
+	(6, 'IM03', 'SP2'),
+	(7, 'IS02', 'SB4'),
+	(8, 'IT05', 'SS4'),
+	(9, 'IT06', 'SP2'),
+	(10, 'IW10', 'SP2');
 /*!40000 ALTER TABLE `detail_produk` ENABLE KEYS */;
 
 -- Dumping structure for table db_cvmitra.detail_produksi
 CREATE TABLE IF NOT EXISTS `detail_produksi` (
-  `id_detail_produksi` int(11) NOT NULL,
-  `id_pesanproduk` int(11) NOT NULL,
-  `nama_customer` varchar(20) NOT NULL,
-  `jumlah` int(11) NOT NULL,
-  `tanggal_mulai` date NOT NULL,
-  `tanggal_selesai` date NOT NULL,
-  `id_produk` varchar(10) NOT NULL,
-  `id_bahanbaku` varchar(6) NOT NULL,
+  `id_detail_produksi` int(11) NOT NULL AUTO_INCREMENT,
+  `id_pesanproduk` int(11) DEFAULT NULL,
+  `jumlah` int(11) DEFAULT NULL,
+  `tanggal_mulai` date DEFAULT NULL,
+  `tanggal_selesai` date DEFAULT NULL,
+  `id_produk` varchar(10) DEFAULT NULL,
+  `id_bahanbaku` varchar(6) DEFAULT NULL,
   PRIMARY KEY (`id_detail_produksi`),
   KEY `id_pesanproduk` (`id_pesanproduk`),
   KEY `id_produk` (`id_produk`),
@@ -174,11 +188,13 @@ CREATE TABLE IF NOT EXISTS `detail_produksi` (
   CONSTRAINT `detail_produksi_ibfk_1` FOREIGN KEY (`id_pesanproduk`) REFERENCES `pesanproduk` (`id_pesanproduk`),
   CONSTRAINT `detail_produksi_ibfk_2` FOREIGN KEY (`id_produk`) REFERENCES `produk` (`id_produk`),
   CONSTRAINT `detail_produksi_ibfk_3` FOREIGN KEY (`id_bahanbaku`) REFERENCES `bahanbaku` (`id_bahanbaku`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
--- Dumping data for table db_cvmitra.detail_produksi: ~0 rows (approximately)
+-- Dumping data for table db_cvmitra.detail_produksi: ~1 rows (approximately)
 DELETE FROM `detail_produksi`;
 /*!40000 ALTER TABLE `detail_produksi` DISABLE KEYS */;
+INSERT INTO `detail_produksi` (`id_detail_produksi`, `id_pesanproduk`, `jumlah`, `tanggal_mulai`, `tanggal_selesai`, `id_produk`, `id_bahanbaku`) VALUES
+	(1, 4, 30, '2020-07-15', '2020-07-18', 'IL01', 'SB4');
 /*!40000 ALTER TABLE `detail_produksi` ENABLE KEYS */;
 
 -- Dumping structure for table db_cvmitra.distribusi
@@ -194,9 +210,11 @@ CREATE TABLE IF NOT EXISTS `distribusi` (
   CONSTRAINT `distribusi_ibfk_2` FOREIGN KEY (`no_polisi`) REFERENCES `kendaraan` (`no_polisi`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumping data for table db_cvmitra.distribusi: ~0 rows (approximately)
+-- Dumping data for table db_cvmitra.distribusi: ~1 rows (approximately)
 DELETE FROM `distribusi`;
 /*!40000 ALTER TABLE `distribusi` DISABLE KEYS */;
+INSERT INTO `distribusi` (`id_distribusi`, `kota_wilayah`, `no_polisi`, `id_user`) VALUES
+	(1, 'Bandung', 'D 5567 FW', 6);
 /*!40000 ALTER TABLE `distribusi` ENABLE KEYS */;
 
 -- Dumping structure for table db_cvmitra.kendaraan
@@ -226,27 +244,12 @@ CREATE TABLE IF NOT EXISTS `pengadaan` (
   CONSTRAINT `pengadaan_ibfk_1` FOREIGN KEY (`id_peramalan`) REFERENCES `peramalan` (`id_peramalan`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumping data for table db_cvmitra.pengadaan: ~0 rows (approximately)
+-- Dumping data for table db_cvmitra.pengadaan: ~1 rows (approximately)
 DELETE FROM `pengadaan`;
 /*!40000 ALTER TABLE `pengadaan` DISABLE KEYS */;
+INSERT INTO `pengadaan` (`id_pengadaan`, `tgl_pengadaan`, `periode`, `id_peramalan`) VALUES
+	(1, '2020-07-21', '2019', 7);
 /*!40000 ALTER TABLE `pengadaan` ENABLE KEYS */;
-
--- Dumping structure for table db_cvmitra.penjualan
-CREATE TABLE IF NOT EXISTS `penjualan` (
-  `id_penjualan` int(11) NOT NULL,
-  `tgl_penjualan` date NOT NULL,
-  `periode` varchar(10) NOT NULL,
-  `status` enum('SELESAI','TIDAK SELESAI') NOT NULL,
-  `id_user` int(11) NOT NULL,
-  PRIMARY KEY (`id_penjualan`),
-  KEY `id_user` (`id_user`),
-  CONSTRAINT `penjualan_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- Dumping data for table db_cvmitra.penjualan: ~0 rows (approximately)
-DELETE FROM `penjualan`;
-/*!40000 ALTER TABLE `penjualan` DISABLE KEYS */;
-/*!40000 ALTER TABLE `penjualan` ENABLE KEYS */;
 
 -- Dumping structure for table db_cvmitra.peramalan
 CREATE TABLE IF NOT EXISTS `peramalan` (
@@ -262,7 +265,7 @@ CREATE TABLE IF NOT EXISTS `peramalan` (
   CONSTRAINT `peramalan_ibfk_2` FOREIGN KEY (`id_bahanbaku`) REFERENCES `bahanbaku` (`id_bahanbaku`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumping data for table db_cvmitra.peramalan: ~6 rows (approximately)
+-- Dumping data for table db_cvmitra.peramalan: ~7 rows (approximately)
 DELETE FROM `peramalan`;
 /*!40000 ALTER TABLE `peramalan` DISABLE KEYS */;
 INSERT INTO `peramalan` (`id_peramalan`, `bulan`, `hasil`, `id_bahanbaku`, `id_user`) VALUES
@@ -271,7 +274,8 @@ INSERT INTO `peramalan` (`id_peramalan`, `bulan`, `hasil`, `id_bahanbaku`, `id_u
 	(3, 'Maret', 321, 'SB4', 1),
 	(4, 'Mei', 90, 'SB4', 1),
 	(5, 'Juni', 200, 'SB4', 1),
-	(6, 'April', 463, 'SB4', 1);
+	(6, 'April', 463, 'SB4', 1),
+	(7, 'Juli', 398, 'SB4', 1);
 /*!40000 ALTER TABLE `peramalan` ENABLE KEYS */;
 
 -- Dumping structure for table db_cvmitra.persediaan
@@ -319,7 +323,7 @@ CREATE TABLE IF NOT EXISTS `pesanproduk` (
   CONSTRAINT `pesanproduk_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumping data for table db_cvmitra.pesanproduk: ~0 rows (approximately)
+-- Dumping data for table db_cvmitra.pesanproduk: ~1 rows (approximately)
 DELETE FROM `pesanproduk`;
 /*!40000 ALTER TABLE `pesanproduk` DISABLE KEYS */;
 INSERT INTO `pesanproduk` (`id_pesanproduk`, `tanggal_pemesanan`, `nama_customer`, `id_user`) VALUES

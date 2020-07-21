@@ -53,7 +53,7 @@
                                         ?>
                                         <form action="ubah-pesanproduk-proses.php" method="post">
                                             <div class="form-group">
-                                                <input type="hidden" name="id_pesanproduk" id="id_distribusi" value="<?php echo $d['id_pesanproduk']; ?>" required />
+                                                <input type="hidden" name="id_pesanproduk" id="id_pesanproduk" value="<?php echo $d['id_pesanproduk']; ?>" required />
                                                 <input type="hidden" name="id_user" id="id_user" value="<?php echo $d['id_user']; ?>" required />
                                             </div>
                                             <div class="form-group">

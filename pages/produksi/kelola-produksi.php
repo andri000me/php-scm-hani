@@ -43,7 +43,7 @@
                             <div class="card mb-5">
                                 <div class="card-header">
                                     <div class="nav-item">
-                                        <!-- <a href="tambah-produksi.php" class="btn btn-sm btn-primary">Tambah Data</a> -->
+                                        <a href="tambah-produksi.php" class="btn btn-sm btn-primary">Tambah Data</a>
                                     </div>
                                 </div>
                                 <div class="card-body">
@@ -51,11 +51,14 @@
                                         <thead class="thead-light text-center">
                                             <tr>
                                                 <th width=6% class="align-middle">No</th>
-                                                <th>Nama Pesan Produk</th>
-                                                <th>Nama Customer</th>
+                                                <th>No Pesan Produk</th>
+                                                <!-- <th>Nama Customer</th> -->
                                                 <th class="align-middle">Jumlah</th>
                                                 <th>Tanggal Mulai</th>
-                                                <th width=16%></th>
+                                                <th>Tanggal Selesai</th>
+                                                <!-- <th>Nama Produk</th> -->
+                                                <!-- <th>Nama Bahan Baku</th> -->
+                                                <th width=22%></th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -76,17 +79,17 @@
                                                     <tr>
                                                         <td class="text-center align-middle"><?php echo $no++; ?></td>
                                                         <td class="align-middle"><?php echo $item['id_pesanproduk']; ?></td>
-                                                        <td class="align-middle"><?php echo $item['nama_customer']; ?></td>
+                                                        <!-- <td class="align-middle"><?php echo $item['nama_customer']; ?></td> -->
                                                         <td class="align-middle"><?php echo $item['jumlah']; ?></td>
                                                         <td class="align-middle"><?php echo $item['tanggal_mulai']; ?></td>
                                                         <td class="align-middle"><?php echo $item['tanggal_selesai']; ?></td>
-                                                        <td class="align-middle"><?php echo $item['id_produk']; ?></td>
-                                                        <td class="align-middle"><?php echo $item['id_bahanbaku']; ?></td>
+                                                        <!-- <td class="align-middle"><?php echo $item['id_produk']; ?></td> -->
+                                                        <!-- <td class="align-middle"><?php echo $item['id_bahanbaku']; ?></td> -->
                                                         <td class="text-center">
-                                                            <a href="ubah-kendaraan.php?id=<?php echo $item['id_detail_produksi'] ?>" class="btn btn-info btn-sm mx-1 float-left">Ubah</a>
-                                                            <a href="detail-kendaraan.php?id=<?php echo $item['id_detail_produksi'] ?>" class="btn btn-success btn-sm mx-1 float-left">Detail</a>
+                                                            <a href="ubah-produksi.php?id=<?php echo $item['id_detail_produksi'] ?>" class="btn btn-info btn-sm mx-1 float-left">Ubah</a>
+                                                            <a href="detail-produksi.php?id=<?php echo $item['id_detail_produksi'] ?>" class="btn btn-success btn-sm mx-1 float-left">Detail</a>
 
-                                                            <form action="hapus-kendaraan.php?id=<?php echo $item['id_detail_produksi'] ?>" method="post">
+                                                            <form action="hapus-produksi.php?id=<?php echo $item['id_detail_produksi'] ?>" method="post">
                                                                 <button type="submit" class="btn btn-danger btn-sm mx-1 float-left">Hapus</button>
                                                             </form>
                                                         </td>
