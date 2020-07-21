@@ -34,6 +34,6 @@
 - pemesanan produk (tambah, ubah, delete) :: *done 100%* 
 
 ## Problem :
-Data pada select option masih nampil error,
-Password belum di HASH
+- Data pada select option masih nampil error *done*
+- Password belum di HASH
 

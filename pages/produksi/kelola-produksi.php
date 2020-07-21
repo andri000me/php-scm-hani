@@ -55,9 +55,6 @@
                                                 <th>Nama Customer</th>
                                                 <th class="align-middle">Jumlah</th>
                                                 <th>Tanggal Mulai</th>
-                                                <th>Tanggal Selesai</th>
-                                                <th>Nama Produk</th>
-                                                <th>Nama Bahan Baku</th>
                                                 <th width=16%></th>
                                             </tr>
                                         </thead>
@@ -66,7 +63,7 @@
                                             include "../../koneksi.php";
 
                                             $no = 1;
-                                            $data = mysqli_query($koneksi, "SELECT * FROM produksi");
+                                            $data = mysqli_query($koneksi, "SELECT * FROM detail_produksi");
                                             if (!$data) {
                                                 ?>
                                                 <tr>

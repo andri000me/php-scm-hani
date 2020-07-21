@@ -54,7 +54,7 @@
                                                 <th>Bulan</th>
                                                 <th>Nama Bahan Baku</th>
                                                 <th>Hasil</th>
-                                                <th width=23%></th>
+                                                <th width=16%></th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -79,7 +79,6 @@
                                                         <td class="align-middle"><?php echo $item['hasil']; ?></td>
                                                         <td class="text-center">
                                                             <a href="ubah-peramalan.php?id=<?php echo $item['id_peramalan'] ?>" class="btn btn-info btn-sm mx-1 float-left">Ubah</a>
-                                                            <a href="detail-peramalan.php?id=<?php echo $item['id_peramalan'] ?>" class="btn btn-success btn-sm mx-1 float-left">Detail</a>
 
                                                             <form action="hapus-peramalan.php?id=<?php echo $item['id_peramalan'] ?>" method="post">
                                                                 <button type="submit" class="btn btn-danger btn-sm mx-1 float-left">Hapus</button>

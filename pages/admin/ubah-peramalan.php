@@ -72,9 +72,9 @@
 
                                                         include "../../koneksi.php";
                                                         $sql = mysqli_query($koneksi, "SELECT id_bahanbaku,nama_bahanbaku FROM bahanbaku") or die(mysqli_error($koneksi));
-                                                        while ($data = mysqli_fetch_array($sql)) {
+                                                        while ($row = mysqli_fetch_array($sql)) {
                                                             ?>
-                                                        <option value="<?php echo $data['id_bahanbaku'] ?>"><?php echo $data['nama_bahanbaku']; ?></option>
+                                                        <option value="<?php echo $row['id_bahanbaku'] ?>"><?php echo $row['nama_bahanbaku']; ?></option>
 
                                                     <?php
                                                         }

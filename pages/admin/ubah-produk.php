@@ -67,6 +67,23 @@
                                                 <label for="harga">Harga</label>
                                                 <input type="text" name="harga" id="harga" value="<?php echo $d['harga']; ?>" class="form-control" required />
                                             </div>
+                                            <div class="form-group">
+                                                <label for="id_bahanbaku">Nama Bahan Baku</label>
+                                                <select name="id_bahanbaku" id="id_bahanbaku" class="custom-select">
+                                                    <option selected disabled value="">Pilih Nama Bahan Baku :</option>
+                                                    <?php
+                                                        include "../../koneksi.php";
+
+                                                        $sql = mysqli_query($koneksi, "SELECT id_bahanbaku,nama_bahanbaku FROM bahanbaku");
+                                                        while ($row = mysqli_fetch_assoc($sql)) {
+                                                            ?>
+                                                        <option value="<?php echo $row['id_bahanbaku']; ?>"><?php echo $row['nama_bahanbaku']; ?></option>
+
+                                                    <?php
+                                                        }
+                                                        ?>
+                                                </select>
+                                            </div>
                                             <hr>
                                             <div class="form-group">
                                                 <input type="submit" class="btn btn-primary" value="Ubah" />

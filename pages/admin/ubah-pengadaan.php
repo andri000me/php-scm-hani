@@ -34,7 +34,7 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Ubah Bahan Baku</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Ubah Pengadaan</h1>
                     </div>
 
                     <!-- Content Row -->
@@ -48,43 +48,52 @@
                                     <?php
                                     include "../../koneksi.php";
                                     $id = $_GET['id'];
-                                    $data = mysqli_query($koneksi, "SELECT * FROM bahanbaku WHERE id_bahanbaku='$id'");
+                                    $data = mysqli_query($koneksi, "select * from pengadaan where id_pengadaan='$id'");
                                     while ($d = mysqli_fetch_array($data)) {
                                         ?>
-                                        <form action="ubah-bahanbaku-proses.php" method="post">
+                                        <form action="ubah-produk-proses.php" method="post">
                                             <div class="form-group">
-                                                <input type="hidden" name="id_bahanbaku" id="id_bahanbaku" value="<?php echo $d['id_bahanbaku']; ?>" required />
+                                                <input type="hidden" name="id_pengadaan" id="id_pengadaan" value="<?php echo $d['id_pengadaan']; ?>" required />
                                             </div>
                                             <div class="form-group">
-                                                <label for="nama_bahanbaku">Nama Bahan Baku</label>
-                                                <input type="text" name="nama_bahanbaku" id="nama_bahanbaku" value="<?php echo $d['nama_bahanbaku']; ?>" class="form-control" required />
+                                                <label for="tgl_pengadaan">Tanggal Pengadaan </label>
+                                                <input type="date" name="tgl_pengadaan" id="tgl_pengadaan" class="form-control" required />
                                             </div>
                                             <div class="form-group">
-                                                <label for="satuan_bahanbaku">Satuan Bahan Baku</label>
-                                                <input type="text" name="satuan_bahanbaku" id="satuan_bahanbaku" value="<?php echo $d['satuan_bahanbaku']; ?>" class="form-control" required />
+                                                <label for="bulan">Kebutuhan Pengadaan (Bulan)</label>
+                                                <select name="bulan" id="bulan" class="custom-select">
+                                                    <option selected disabled value="">Pilih Kebutuhan Bulan :</option>
+                                                    <option value="Januari">Januari</option>
+                                                    <option value="Februari">Februari</option>
+                                                    <option value="Maret">Maret</option>
+                                                    <option value="April">April</option>
+                                                    <option value="Mei">Mei</option>
+                                                    <option value="Juni">Juni</option>
+                                                    <option value="Juli">Juli</option>
+                                                    <option value="Agustus">Agustus</option>
+                                                    <option value="September">September</option>
+                                                    <option value="Oktober">Oktober</option>
+                                                    <option value="November">November</option>
+                                                    <option value="Desember">Desember</option>
+                                                </select>
                                             </div>
                                             <div class="form-group">
-                                                <label for="harga">Harga</label>
-                                                <input type="text" name="harga" id="harga" value="<?php echo $d['harga']; ?>" class="form-control" required />
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="id_supplier">Nama Supplier</label>
-                                                <select name="id_supplier" id="id_supplier" class="custom-select">
-                                                    <option selected value="<?php echo $d['id_supplier']; ?>">Pilih Nama Supplier :</option>
+                                                <label for="id_bahanbaku">Nama Bahan Baku</label>
+                                                <select name="id_bahanbaku" id="id_bahanbaku" class="custom-select">
+                                                    <option selected disabled value="">Pilih Nama Bahan Baku :</option>
                                                     <?php
                                                         include "../../koneksi.php";
 
-                                                        $sql = mysqli_query($koneksi, "SELECT id_supplier,nama_supplier FROM supplier");
-                                                        while ($row = mysqli_fetch_array($sql)) {
+                                                        $sql = mysqli_query($koneksi, "SELECT id_bahanbaku,nama_bahanbaku FROM bahanbaku");
+                                                        while ($row = mysqli_fetch_assoc($sql)) {
                                                             ?>
-                                                        <option value="<?php echo $row['id_supplier']; ?>"><?php echo $row['nama_supplier']; ?></option>
+                                                        <option value="<?php echo $row['id_bahanbaku']; ?>"><?php echo $row['nama_bahanbaku']; ?></option>
 
                                                     <?php
                                                         }
                                                         ?>
                                                 </select>
                                             </div>
-
                                             <hr>
                                             <div class="form-group">
                                                 <input type="submit" class="btn btn-primary" value="Ubah" />
