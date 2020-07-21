@@ -74,7 +74,7 @@ CREATE TABLE IF NOT EXISTS `detail_pengadaan` (
   CONSTRAINT `detail_pengadaan_ibfk_2` FOREIGN KEY (`id_bahanbaku`) REFERENCES `bahanbaku` (`id_bahanbaku`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
--- Dumping data for table db_cvmitra.detail_pengadaan: ~1 rows (approximately)
+-- Dumping data for table db_cvmitra.detail_pengadaan: ~0 rows (approximately)
 DELETE FROM `detail_pengadaan`;
 /*!40000 ALTER TABLE `detail_pengadaan` DISABLE KEYS */;
 INSERT INTO `detail_pengadaan` (`id_detail_pengadaan`, `id_pengadaan`, `id_bahanbaku`, `qty`) VALUES
@@ -188,7 +188,7 @@ CREATE TABLE IF NOT EXISTS `detail_produksi` (
   CONSTRAINT `detail_produksi_ibfk_1` FOREIGN KEY (`id_pesanproduk`) REFERENCES `pesanproduk` (`id_pesanproduk`),
   CONSTRAINT `detail_produksi_ibfk_2` FOREIGN KEY (`id_produk`) REFERENCES `produk` (`id_produk`),
   CONSTRAINT `detail_produksi_ibfk_3` FOREIGN KEY (`id_bahanbaku`) REFERENCES `bahanbaku` (`id_bahanbaku`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 -- Dumping data for table db_cvmitra.detail_produksi: ~1 rows (approximately)
 DELETE FROM `detail_produksi`;

@@ -18,7 +18,7 @@
 - supplier (tambah, ubah, delete) :: *done*
 - bahan baku (tambah, ubah, delete) :: *done*
 - pemesanan bahan baku (tambah, ubah, delete)
-- pengadaan (tambah, ubah, delete) :: *done - ubah belum* 
+- pengadaan (tambah, ubah, delete) :: *done* 
 - monitoring persediaan bahan baku
 - monitoring produksi
 - peramalan (tambah, ubah, delete) :: *done*

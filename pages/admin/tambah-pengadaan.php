@@ -104,11 +104,6 @@
                                                 ?>
                                             </select>
                                         </div>
-                                        <!-- <div class="form-group">
-                                            <label for="periode">Periode </label>
-                                            <input type="tex" name="periode" id="periode" placeholder="Isikan Periode " class="form-control" required />
-                                        </div> -->
-
                                         <hr>
                                         <div class="form-group">
                                             <input type="submit" class="btn btn-primary" value="Simpan" />

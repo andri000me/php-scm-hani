@@ -51,13 +51,14 @@
                                     $data = mysqli_query($koneksi, "select * from pengadaan where id_pengadaan='$id'");
                                     while ($d = mysqli_fetch_array($data)) {
                                         ?>
-                                        <form action="ubah-produk-proses.php" method="post">
+                                        <form action="ubah-pengadaan-proses.php" method="post">
                                             <div class="form-group">
                                                 <input type="hidden" name="id_pengadaan" id="id_pengadaan" value="<?php echo $d['id_pengadaan']; ?>" required />
+                                                <input type="hidden" name="id_user" id="id_user" value="<?php echo $_SESSION['id_user']; ?>" required />
                                             </div>
                                             <div class="form-group">
                                                 <label for="tgl_pengadaan">Tanggal Pengadaan </label>
-                                                <input type="date" name="tgl_pengadaan" id="tgl_pengadaan" class="form-control" required />
+                                                <input type="date" name="tgl_pengadaan" id="tgl_pengadaan" value="<?php echo $d['tgl_pengadaan']; ?>" class="form-control" required />
                                             </div>
                                             <div class="form-group">
                                                 <label for="bulan">Kebutuhan Pengadaan (Bulan)</label>
@@ -92,6 +93,22 @@
                                                     <?php
                                                         }
                                                         ?>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="periode">Kebutuhan Pengadaan (Tahun)</label>
+                                                <select name="periode" id="periode" class="custom-select">
+                                                    <option selected disabled value="">Pilih Kebutuhan Periode :</option>
+                                                    <option value="2016">2016</option>
+                                                    <option value="2017">2017</option>
+                                                    <option value="2018">2018</option>
+                                                    <option value="2019">2019</option>
+                                                    <option value="2020">2020</option>
+                                                    <option value="2021">2021</option>
+                                                    <option value="2022">2022</option>
+                                                    <option value="2023">2023</option>
+                                                    <option value="2024">2024</option>
+                                                    <option value="2025">2025</option>
                                                 </select>
                                             </div>
                                             <hr>
