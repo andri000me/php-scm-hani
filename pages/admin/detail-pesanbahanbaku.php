@@ -69,7 +69,7 @@
                                                     <td class="align-middle"><?php echo $item['tanggal_pemesanan']; ?></td>
                                                 </tr>
                                                 <tr>
-                                                    <th>TOTAL PEMESANAN BAHAN BAKU</th>
+                                                    <th>TOTAL PEMESANAN BAHAN BAKU</th> 
                                                     <td class="align-middle"><?php echo $item['total']; ?></td>
                                                 </tr>
                                                 <tr>
